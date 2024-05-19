@@ -11,7 +11,6 @@ from pymongo import MongoClient
 import jwt
 import datetime
 
-secrets = toml.load("secrets.toml")
 openai = OpenAI(api_key=st.secrets["openai"])
 
 #create a connection to the database
