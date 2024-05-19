@@ -83,8 +83,8 @@ def extract_entities(text):
 
 def search_replace(path, text):
     
-    doc = pymupdf.open(path)
-    
+    doc = open(path, "rb")
+    doc = doc.read()    
     
     for page in doc:
         instances = page.search_for(text)
