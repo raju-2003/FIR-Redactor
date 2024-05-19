@@ -4,12 +4,11 @@ import streamlit as st
 import pandas as pd
 from PyPDF2 import PdfReader
 from openai import OpenAI
-import toml
-import fitz
 import os
 from pymongo import MongoClient
 import jwt
 import datetime
+import pymupdf
 
 openai = OpenAI(api_key=st.secrets["openai"])
 
@@ -84,7 +83,7 @@ def extract_entities(text):
 
 def search_replace(path, text):
     
-    doc = fitz.open(path)
+    doc = pymupdf.open(path)
     
     
     for page in doc:
