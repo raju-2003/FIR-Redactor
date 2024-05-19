@@ -9,6 +9,7 @@ from pymongo import MongoClient
 import jwt
 import datetime
 import tempfile
+import fitz
 
 openai = OpenAI(api_key=st.secrets["openai"])
 
@@ -83,9 +84,8 @@ def extract_entities(text):
 
 def search_replace(path, text):
     
-    doc = open(path, "rb")
-    doc = doc.read()    
     
+    doc = fitz.open(path)
     for page in doc:
         instances = page.search_for(text)
         for inst in instances:
