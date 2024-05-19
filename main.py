@@ -8,6 +8,7 @@ import os
 from pymongo import MongoClient
 import jwt
 import datetime
+import tempfile
 
 openai = OpenAI(api_key=st.secrets["openai"])
 
@@ -162,7 +163,10 @@ def main():
                 text = st.text_input("Enter the text to Redact in the file", key="text")
 
                 if st.button("Redact"):
-                    search_replace(uploaded_file, text)
+                    with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+                        temp_file.write(uploaded_file.getvalue())
+                        uploaded_file = temp_file.name
+                        search_replace(uploaded_file, text)
             else:
                 st.error(error)
                 # st.experimental_rerun()
