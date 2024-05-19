@@ -12,11 +12,11 @@ import jwt
 import datetime
 
 secrets = toml.load("secrets.toml")
-openai = OpenAI(api_key=secrets["api_keys"]["openai"])
+openai = OpenAI(api_key=st.secrets["openai"])
 
 #create a connection to the database
 
-client = MongoClient(secrets["database"]["connection_string"])
+client = MongoClient(st.secrets["connection_string"])
 
 db = client["KSP"]
 
