@@ -8,7 +8,6 @@ import os
 from pymongo import MongoClient
 import jwt
 import datetime
-import pymupdf
 
 openai = OpenAI(api_key=st.secrets["openai"])
 
