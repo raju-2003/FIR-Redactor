@@ -99,7 +99,7 @@ def search_replace(path, text):
     #download the redacted file to the local system
     st.download_button(label="Download Redacted PDF", data=open(redacted_pdf_path, 'rb').read(), file_name='redacted_document.pdf', mime='application/pdf')
     
-    st.success(f"Redacted PDF saved to: {redacted_pdf_path}")
+    # st.success(f"Redacted PDF saved to: {redacted_pdf_path}")
     st.success("File redacted successfully")
 
 
