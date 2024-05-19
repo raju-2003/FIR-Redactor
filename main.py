@@ -85,6 +85,8 @@ def extract_entities(text):
 def search_replace(path, text):
     
     doc = fitz.open(path)
+    
+    
     for page in doc:
         instances = page.search_for(text)
         for inst in instances:
@@ -158,11 +160,11 @@ def main():
                         df = pd.DataFrame(res_dict.items(), columns=["Entity", "Value"])
                         st.write(df)
 
-                path = st.text_input("Input the path of file", key="path")
+                # path = st.text_input("Input the path of file", key="path")
                 text = st.text_input("Enter the text to Redact in the file", key="text")
 
                 if st.button("Redact"):
-                    search_replace(path, text)
+                    search_replace(uploaded_file, text)
             else:
                 st.error(error)
                 # st.experimental_rerun()
