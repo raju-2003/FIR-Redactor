@@ -1,57 +1,100 @@
-**KSP DATATHON 2024**
+# FIR Redactor for Karnataka Police Department
 
-**Data Privacy in Law Enforcement**
+## Overview
+Welcome to the FIR Redactor, a powerful and intuitive tool designed specifically for the Karnataka Police Department. Our application aims to enhance the privacy and security of sensitive information within First Information Reports (FIRs). This tool leverages advanced language models and PDF processing libraries to identify and redact personal identifiers from FIR documents written in both English and Kannada.
 
----
+## Key Features
 
-### Overview
+1. **Dual Language Support**: Handles FIRs in both English and Kannada, ensuring comprehensive coverage for diverse linguistic needs.
 
-Our application provides a secure platform tailored for police departments to manage First Information Report (FIR) documents effectively. FIR documents are crucial legal records that contain sensitive information about reported crimes and incidents. With our solution, police departments can upload, manage, and access FIR documents securely, ensuring data privacy and protection.
+2. **AI-Powered Entity Extraction**: Utilizes the cutting-edge LLM model to accurately extract personal identifiers such as names, addresses, and other sensitive information from FIR texts.
 
-### Features
+3. **Automated Redaction**: Employs PyMuPDF to seamlessly redact identified sensitive information from PDF documents, replacing it with blacked-out text to maintain confidentiality.
 
-1. **Secure Upload**: Police officers can securely upload FIR documents to the platform, ensuring confidentiality and integrity.
+4. **User-Friendly Interface**: Provides an intuitive and easy-to-navigate interface for users, including tabs for Home, Login, Redaction, and comprehensive information about the tool.
 
-2. **Automatic Anonymization**: Uploaded FIR documents undergo automatic anonymization using advanced AI algorithms. Sensitive information such as personal details of victims and witnesses are masked to protect privacy.
+## How It Works
 
-3. **Data Security**: Our platform employs robust security measures to safeguard FIR documents and prevent unauthorized access.
+- **Upload FIR Documents**: Users can upload FIR PDFs through a simple file uploader. The application reads and extracts text from these documents for further processing.
 
-4. **User-Controlled Masking**: Police officers have the option to mask additional sensitive information manually, providing them with control over data privacy and access.
+- **AI-Suggested Redactions**: After analyzing the text, the application suggests redactions by identifying sensitive entities. These suggestions are presented in a structured format for user review.
 
-5. **Data Privacy Emphasis**: We prioritize user privacy and data protection, ensuring compliance with privacy regulations and standards.
+- **Redaction Execution**: Users can input the specific text they wish to redact, and the tool will automatically find and redact these instances within the document. The redacted PDF is then saved securely.
 
-### Usage
+## Security and Privacy
 
-1. **Authentication**: Users authenticate themselves securely to access the platform. Only authorized personnel from police departments are granted access.
+The FIR Redactor ensures that the privacy of individuals involved in FIRs is protected by securely handling all documents and utilizing state-of-the-art redaction techniques. All data processing is performed with strict adherence to security protocols to prevent unauthorized access and maintain the integrity of sensitive information.
 
-2. **Document Upload**: Officers upload FIR documents to the platform, ensuring that all necessary information related to reported crimes is securely stored.
+## Intended Use
 
-3. **Anonymization**: Uploaded FIR documents undergo automatic anonymization, ensuring that sensitive information is protected.
+This tool is designed to assist the Karnataka Police Department in safeguarding personal information within FIRs, facilitating compliance with privacy regulations and enhancing the trust and confidence of the public.
 
-4. **Data Management**: Officers can manage and organize FIR documents effectively, ensuring easy retrieval and access when needed.
+## Setup and Installation
 
-5. **Masking Sensitive Information**: Officers have the option to manually mask additional sensitive information in FIR documents, ensuring enhanced privacy and compliance with regulations.
+### Prerequisites
 
-### Technology Stack
+- Python 3.7 or higher
+- MongoDB
+- Streamlit
+- PyPDF2
+- PyMuPDF
+- OpenAI API key
 
-- **Frontend**: Streamlit
-- **Backend**: Python
-- **Database**: MySQL
-- **AI**: LLM model
-- **Security**: JWT Authentication
+### Installation Steps
 
-### Installation
+1. **Clone the Repository**
 
-1. Clone the repository: `git clone https://github.com/KSP-DATATHON-24.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Configure database settings & api key.
-4. Run the application: `streamlit main.py`
+   ```sh
+   git clone <repository_url>
+   cd <repository_directory>
+   ```
 
-**Credits:**
-This code was created by RUBIX CUBE
+2. **Install Dependencies**
 
-**Github:**
-[https://github.com/raju-2003](https://github.com/raju-2003)
----
+   ```sh
+   pip install -r requirements.txt
+   ```
 
-With our application, police departments can ensure the secure handling of sensitive FIR documents, emphasizing user privacy and data protection.
+3. **Set Up Environment Variables**
+
+   Create a `.streamlit/secrets.toml` file and add your OpenAI API key and MongoDB connection string:
+
+   ```toml
+   [secrets]
+   openai = "your_openai_api_key"
+   connection_string = "your_mongodb_connection_string"
+   ```
+
+### Running the Application
+
+```sh
+streamlit run app.py
+```
+
+## Application Structure
+
+- **app.py**: The main application file containing the Streamlit interface and all functionalities.
+- **requirements.txt**: A file containing all the dependencies required to run the application.
+
+## Main Functions and Their Roles
+
+- **generate_token(user_id)**: Generates a JWT token for user authentication.
+- **validate_token(token)**: Validates the JWT token.
+- **save_token(user_id, token, expiry)**: Saves the generated token to the MongoDB database.
+- **check_login(username, password)**: Verifies user credentials against the database.
+- **read_file(pdf_file)**: Reads the uploaded PDF file and extracts text.
+- **extract_entities(text)**: Uses the OpenAI API to extract sensitive entities from the text.
+- **search_replace(path, text)**: Redacts specified text from the PDF document and provides a downloadable redacted version.
+
+## Usage
+
+1. **Login**: Users must log in using their credentials to access the redaction features.
+2. **Upload FIR Document**: After logging in, users can upload FIR documents in PDF format.
+3. **AI-Suggested Redactions**: The application will provide AI-suggested redactions based on the uploaded document.
+4. **Manual Redaction**: Users can manually input text to be redacted and download the redacted PDF.
+
+## Developed By
+
+### Rubix Cube
+
+This tool is designed to assist the Karnataka Police Department in safeguarding personal information within FIRs, facilitating compliance with privacy regulations and enhancing the trust and confidence of the public.
