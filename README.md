@@ -45,8 +45,7 @@ This tool is designed to assist the Karnataka Police Department in safeguarding 
 1. **Clone the Repository**
 
    ```sh
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone https://github.com/raju-2003/FIR-Redactor
    ```
 
 2. **Install Dependencies**
